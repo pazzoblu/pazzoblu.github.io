@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>LeanSolo – prototipo</title>
+<style>
+  :root {
+    --bg: #f7f8f4; --sup: #ffffff; --testo: #1b1f1a; --tenue: #4a5248; --bordo: #b9c1b3;
+    --prim: #2f6b2a; --prim-testo: #ffffff; --prim-hover: #245420;
+    --attenz: #7a4200; --attenz-bg: #fff4e0;
+    --ok: #1f6b33; --ok-bg: #e6f4ea;
+    --err: #a1261b; --err-bg: #fdeceb;
+    --focus: #1a4fd6;
+    --raggio: 10px;
+    font-size: 18px;
+  }
+  html.grande { font-size: 22px; }
+  html.contrasto {
+    --bg: #000; --sup: #000; --testo: #fff; --tenue: #fff; --bordo: #fff;
+    --prim: #ffeb3b; --prim-testo: #000; --prim-hover: #fff59d;
+    --attenz: #ffeb3b; --attenz-bg: #000; --ok: #7cfc00; --ok-bg: #000;
+    --err: #ff8a80; --err-bg: #000; --focus: #00e5ff;
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--testo); font-family: system-ui, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.5; }
+  a { color: var(--prim); }
+  html.contrasto a { color: var(--prim); }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  [hidden] { display: none !important; }
+
+  .salta { position: absolute; left: -9999px; top: 0; background: var(--sup); padding: .6rem 1rem; z-index: 10; }
+  .salta:focus { left: 1rem; top: 1rem; }
+
+  .prova { background: var(--attenz-bg); color: var(--attenz); border-bottom: 2px solid var(--attenz); padding: .4rem 1rem; text-align: center; font-weight: 600; }
+
+  header { background: var(--sup); border-bottom: 1px solid var(--bordo); }
+  .testata { max-width: 1040px; margin: 0 auto; padding: .6rem 1rem; display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; align-items: center; }
+  .marchio { font-weight: 800; font-size: 1.25rem; color: var(--prim); text-decoration: none; margin-right: auto; }
+  .marchio small { display: block; font-weight: 500; font-size: .8rem; color: var(--tenue); }
+  nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .3rem; }
+  nav a { display: inline-flex; align-items: center; min-height: 44px; padding: .3rem .8rem; border-radius: var(--raggio); text-decoration: none; color: var(--testo); font-weight: 600; }
+  nav a:hover { background: var(--bg); }
+  nav a[aria-current="page"] { background: var(--prim); color: var(--prim-testo); }
+  .preferenze { display: flex; gap: .4rem; }
+
+  main { max-width: 1040px; margin: 0 auto; padding: 1rem 1rem 6rem; }
+  h1 { font-size: 1.7rem; margin: .6rem 0 .3rem; }
+  h1:focus { outline: none; }
+  h2 { font-size: 1.25rem; margin: 1.4rem 0 .5rem; }
+  .sotto { color: var(--tenue); margin-top: 0; }
+
+  button, .pulsante { font: inherit; font-weight: 600; min-height: 44px; padding: .45rem 1.1rem; border-radius: var(--raggio); border: 2px solid var(--prim); background: var(--sup); color: var(--prim); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: .4rem; }
+  .primario { background: var(--prim); color: var(--prim-testo); }
+  .primario:hover { background: var(--prim-hover); }
+  .grande-btn { font-size: 1.15rem; padding: .7rem 1.6rem; }
+  .piccolo { min-height: 44px; font-size: .9rem; padding: .3rem .8rem; }
+  button[aria-pressed="true"] { background: var(--prim); color: var(--prim-testo); }
+
+  .schede { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .scheda { background: var(--sup); border: 2px solid var(--bordo); border-radius: var(--raggio); padding: 1.1rem; display: flex; flex-direction: column; gap: .6rem; }
+  .scheda.da-fare { border-color: var(--attenz); }
+  .scheda .numero { font-size: 2.4rem; font-weight: 800; line-height: 1; }
+  .scheda p { margin: 0; }
+  .scheda .pulsante { align-self: flex-start; margin-top: auto; }
+  .tutto-ok { background: var(--ok-bg); color: var(--ok); border: 2px solid var(--ok); border-radius: var(--raggio); padding: 1rem; font-weight: 600; }
+
+  .riquadro { background: var(--sup); border: 1px solid var(--bordo); border-radius: var(--raggio); padding: 1rem; margin: 1rem 0; }
+  .riquadro h2 { margin-top: 0; }
+  .attenzione { border-left: 6px solid var(--attenz); }
+  .etichetta { display: inline-block; font-size: .85rem; font-weight: 700; padding: .1rem .5rem; border-radius: 999px; border: 1px solid currentColor; }
+  .etichetta.attenz { color: var(--attenz); background: var(--attenz-bg); }
+  .etichetta.ok { color: var(--ok); background: var(--ok-bg); }
+  .etichetta.err { color: var(--err); background: var(--err-bg); }
+
+  .domanda { border-top: 1px solid var(--bordo); padding-top: 1rem; margin-top: 1rem; }
+  fieldset { border: 0; padding: 0; margin: 0; }
+  legend { font-weight: 700; margin-bottom: .4rem; padding: 0; }
+  .scelta { display: flex; align-items: center; gap: .6rem; min-height: 44px; }
+  .scelta input { width: 1.4rem; height: 1.4rem; }
+  label { font-weight: 600; }
+  .campo { display: flex; flex-direction: column; gap: .3rem; margin: .6rem 0; max-width: 26rem; }
+  input[type="number"], input[type="search"], input[type="text"], select { font: inherit; min-height: 44px; padding: .35rem .6rem; border: 2px solid var(--tenue); border-radius: 8px; background: var(--sup); color: var(--testo); }
+  .aiuto-campo { color: var(--tenue); font-size: .9rem; }
+  .errore-campo { color: var(--err); font-weight: 700; }
+  .campo.con-errore input { border-color: var(--err); }
+  .risultato { font-weight: 700; color: var(--ok); }
+
+  details { margin: .6rem 0; }
+  summary { cursor: pointer; font-weight: 700; min-height: 44px; display: flex; align-items: center; }
+  table { width: 100%; border-collapse: collapse; background: var(--sup); }
+  caption { text-align: left; font-weight: 700; padding: .4rem 0; }
+  th, td { text-align: left; padding: .55rem .5rem; border-bottom: 1px solid var(--bordo); vertical-align: top; }
+  th { font-size: .9rem; color: var(--tenue); }
+  td.num, th.num { text-align: right; white-space: nowrap; }
+  .tabella-scorre { overflow-x: auto; }
+
+  .riepilogo-errori { border: 3px solid var(--err); background: var(--err-bg); border-radius: var(--raggio); padding: 1rem; margin: 1rem 0; }
+  .riepilogo-errori h2 { margin-top: 0; color: var(--err); }
+  .riepilogo-errori a { color: var(--err); font-weight: 700; }
+
+  .barra-azione { position: sticky; bottom: 0; background: var(--sup); border-top: 2px solid var(--bordo); padding: .8rem 1rem; margin: 1.5rem -1rem 0; display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+
+  .filtri { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; align-items: center; }
+
+  .avviso { position: fixed; left: 50%; bottom: 1rem; transform: translateX(-50%); width: min(640px, calc(100% - 2rem)); background: var(--testo); color: var(--bg); border-radius: var(--raggio); padding: .8rem 1rem; display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; box-shadow: 0 4px 16px rgba(0,0,0,.25); z-index: 20; }
+  html.contrasto .avviso { border: 2px solid #fff; }
+  .avviso p { margin: 0; flex: 1 1 16rem; font-weight: 600; }
+  .avviso button { border-color: var(--bg); color: var(--bg); background: transparent; }
+
+  .lista-parte { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+  .azioni { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .8rem; }
+
+  .telefono { width: 360px; max-width: 100%; margin: 1rem auto; border: 10px solid #222; border-radius: 34px; background: var(--bg); overflow: hidden; min-height: 600px; display: flex; flex-direction: column; }
+  .telefono-testata { background: var(--prim); color: var(--prim-testo); padding: .7rem 1rem; font-weight: 800; }
+  .telefono-corpo { padding: .8rem; flex: 1; }
+  .telefono-schede { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--bordo); background: var(--sup); }
+  .telefono-schede button { border: 0; border-radius: 0; min-height: 56px; font-size: .9rem; }
+  .telefono-schede button[aria-pressed="true"] { background: var(--prim); color: var(--prim-testo); }
+  .telefono ul { padding-left: 0; list-style: none; margin: 0; display: grid; gap: .6rem; }
+  .telefono li { background: var(--sup); border: 1px solid var(--bordo); border-radius: var(--raggio); padding: .6rem .8rem; }
+
+  @media (max-width: 640px) {
+    :root { font-size: 17px; }
+    .marchio { margin-right: 0; width: 100%; }
+    .barra-azione .pulsante, .barra-azione button { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+<div class="prova" role="note">Modalità prova: tutti i dati sono di esempio. Puoi fare quello che vuoi senza paura di sbagliare.</div>
+
+<header>
+  <div class="testata">
+    <a class="marchio" href="#home">LeanSolo <small>Agraria Il Melo · negozio di prova</small></a>
+    <nav aria-label="Menu principale">
+      <ul>
+        <li><a href="#home" data-voce="home">Cosa c'è da fare</a></li>
+        <li><a href="#controlla" data-voce="controlla">Fatture</a></li>
+        <li><a href="#magazzino" data-voce="magazzino">Magazzino</a></li>
+        <li><a href="#telefono" data-voce="telefono">Sul telefono</a></li>
+        <li><a href="#aiuto" data-voce="aiuto">Aiuto</a></li>
+      </ul>
+    </nav>
+    <div class="preferenze" role="group" aria-label="Preferenze di visualizzazione">
+      <button class="piccolo" id="btn-grande" aria-pressed="false">Testo grande</button>
+      <button class="piccolo" id="btn-contrasto" aria-pressed="false">Alto contrasto</button>
+    </div>
+  </div>
+</header>
+
+<main id="contenuto">
+
+  <!-- COSA C'È DA FARE -->
+  <section data-vista="home" aria-labelledby="t-home">
+    <h1 id="t-home" tabindex="-1">Buongiorno! Ecco cosa c'è da fare</h1>
+    <p class="sotto">Ultimo controllo delle fatture arrivate: oggi alle 9:41.</p>
+    <div id="home-schede" class="schede"></div>
+  </section>
+
+  <!-- FATTURE DA CONTROLLARE -->
+  <section data-vista="controlla" aria-labelledby="t-controlla" hidden>
+    <h1 id="t-controlla" tabindex="-1">Fatture da controllare</h1>
+    <div id="controlla-vuoto" class="tutto-ok" hidden>✓ Non ci sono fatture da controllare. Quando ne arrivano di nuove le trovi qui.</div>
+    <div id="controlla-contenuto">
+      <p class="sotto">Sono arrivate <strong>3 fatture</strong>. Quasi tutto è già pronto: ti chiediamo solo le cose che non sappiamo.</p>
+      <div id="riepilogo-errori" class="riepilogo-errori" role="alert" tabindex="-1" hidden></div>
+      <div id="elenco-fatture"></div>
+      <div class="barra-azione">
+        <button class="primario grande-btn" id="btn-carica">Carica in magazzino</button>
+        <span id="totale-carico" class="sotto" aria-live="polite"></span>
+      </div>
+    </div>
+    <p><a href="#parte">Vedi anche le fatture messe da parte</a></p>
+  </section>
+
+  <!-- MESSE DA PARTE -->
+  <section data-vista="parte" aria-labelledby="t-parte" hidden>
+    <h1 id="t-parte" tabindex="-1">Fatture messe da parte</h1>
+    <p class="sotto">Queste fatture non aggiungono merce al magazzino. Ti spieghiamo perché: decidi tu cosa farne.</p>
+    <div id="parte-vuoto" class="tutto-ok" hidden>✓ Nessuna fattura messa da parte.</div>
+    <ul id="lista-parte" class="lista-parte"></ul>
+  </section>
+
+  <!-- MAGAZZINO -->
+  <section data-vista="magazzino" aria-labelledby="t-magazzino" hidden>
+    <h1 id="t-magazzino" tabindex="-1">Magazzino</h1>
+    <div class="riquadro">
+      <div class="filtri">
+        <div class="campo" style="margin:0;flex:1 1 16rem">
+          <label for="cerca">Cerca un prodotto</label>
+          <input type="search" id="cerca" placeholder="Per esempio: terriccio" autocomplete="off">
+        </div>
+        <fieldset>
+          <legend>Mostra</legend>
+          <div class="filtri">
+            <label class="scelta"><input type="radio" name="filtro" value="tutti" checked> Tutti</label>
+            <label class="scelta"><input type="radio" name="filtro" value="esaurimento"> Stanno finendo</label>
+            <label class="scelta"><input type="radio" name="filtro" value="sistemare"> Da sistemare</label>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <p id="conteggio-magazzino" aria-live="polite" class="sotto"></p>
+    <div class="tabella-scorre">
+      <table>
+        <caption class="sr">Prodotti in magazzino</caption>
+        <thead><tr><th scope="col">Prodotto</th><th scope="col" class="num">Quantità</th><th scope="col" class="num">Prezzo di vendita</th><th scope="col">Situazione</th></tr></thead>
+        <tbody id="corpo-magazzino"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- TELEFONO -->
+  <section data-vista="telefono" aria-labelledby="t-telefono" hidden>
+    <h1 id="t-telefono" tabindex="-1">Come appare sul telefono</h1>
+    <p class="sotto">Un'anteprima dell'app: avvisi, magazzino e stato, sempre in tasca.</p>
+    <div class="telefono" role="region" aria-label="Anteprima dell'app sul telefono">
+      <div class="telefono-testata">LeanSolo</div>
+      <div class="telefono-corpo">
+        <div data-tel="avvisi">
+          <h2 style="margin-top:0">Avvisi</h2>
+          <ul>
+            <li><strong>Oggi 9:41</strong><br>Sono arrivate 3 fatture da controllare.</li>
+            <li><strong>Ieri 18:05</strong><br>4 prodotti stanno finendo.</li>
+            <li><strong>Lunedì</strong><br>Messaggio da LeanSolo: domenica notte arriva un aggiornamento, non devi fare niente.</li>
+          </ul>
+        </div>
+        <div data-tel="magazzino" hidden>
+          <h2 style="margin-top:0">Stanno finendo</h2>
+          <ul id="tel-esaurimento"></ul>
+        </div>
+        <div data-tel="stato" hidden>
+          <h2 style="margin-top:0">Stato</h2>
+          <ul>
+            <li><span class="etichetta ok">✓ Tutto funziona</span><br>Ultimo collegamento con il negozio: 2 minuti fa.</li>
+            <li>Licenza attiva fino al 14/03/2027.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="telefono-schede" role="group" aria-label="Sezioni dell'app">
+        <button aria-pressed="true" data-tel-btn="avvisi">Avvisi</button>
+        <button aria-pressed="false" data-tel-btn="magazzino">Magazzino</button>
+        <button aria-pressed="false" data-tel-btn="stato">Stato</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- AIUTO -->
+  <section data-vista="aiuto" aria-labelledby="t-aiuto" hidden>
+    <h1 id="t-aiuto" tabindex="-1">Aiuto</h1>
+    <details><summary>Cosa fa LeanSolo, in due parole?</summary>
+      <p>Legge da solo le fatture dei tuoi fornitori, ti chiede conferma e aggiunge la merce al magazzino. Così sai sempre cosa hai in negozio, anche dal telefono.</p></details>
+    <details><summary>Cosa vuol dire "fattura messa da parte"?</summary>
+      <p>È una fattura che non aggiunge merce: per esempio una bolletta o un reso. Non la buttiamo: la trovi in "Fatture messe da parte" con la spiegazione, e decidi tu.</p></details>
+    <details><summary>Ho caricato per sbaglio: come torno indietro?</summary>
+      <p>Subito dopo il carico compare il pulsante <strong>Annulla</strong>. Anche più tardi puoi annullare un carico: niente va perso.</p></details>
+    <details><summary>Devo per forza mettere il prezzo di vendita?</summary>
+      <p>No. Ti proponiamo un prezzo calcolato sul costo; puoi cambiarlo o lasciarlo vuoto e metterlo dopo.</p></details>
+    <details><summary>Posso usare LeanSolo solo con la tastiera?</summary>
+      <p>Sì. Con il tasto Tab passi da un elemento all'altro, con Invio o Spazio premi i pulsanti. Funziona anche con i lettori di schermo come NVDA.</p></details>
+    <p><button id="btn-assistenza">Chiedi aiuto a una persona</button></p>
+  </section>
+</main>
+
+<div id="avviso" class="avviso" role="status" aria-live="polite" hidden>
+  <p id="avviso-testo"></p>
+  <button id="avviso-annulla" hidden>Annulla</button>
+  <button id="avviso-chiudi">Chiudi</button>
+</div>
+
+<script>
+'use strict';
+const euro = n => n.toLocaleString('it-IT', { style: 'currency', currency: 'EUR' });
+const num = n => n.toLocaleString('it-IT');
+const $ = s => document.querySelector(s);
+
+// ---------- Dati di esempio ----------
+const articoli = {
+  terriccio: { nome: 'Terriccio universale 80 L', q: 34, um: 'sacchi', min: 10, prezzo: 9.90 },
+  npk:       { nome: 'Concime granulare NPK 12-12-17 – 25 kg', q: 3, um: 'sacchi', min: 5, prezzo: 42.00 },
+  agrumi:    { nome: 'Concime per agrumi 1 kg', q: 18, um: 'pz', min: 6, prezzo: 8.50 },
+  pomodoro:  { nome: 'Semi pomodoro San Marzano – bustina', q: 12, um: 'pz', min: 10, prezzo: 2.20 },
+  lattuga:   { nome: 'Semi lattuga Gentilina – bustina', q: 45, um: 'pz', min: 10, prezzo: 1.90 },
+  basilico:  { nome: 'Semi basilico Genovese – bustina', q: 4, um: 'pz', min: 10, prezzo: 1.90 },
+  rame:      { nome: 'Rame ossicloruro 1 kg', q: 2, um: 'pz', min: 4, prezzo: 12.50 },
+  tubo:      { nome: 'Tubo per irrigazione 25 m', q: 8, um: 'pz', min: 3, prezzo: 29.90 },
+  guanti:    { nome: 'Guanti da giardino taglia M', q: -2, um: 'paia', min: 5, prezzo: 6.50 },
+  vasi:      { nome: 'Vaso in terracotta Ø 20 cm', q: 40, um: 'pz', min: 10, prezzo: 4.20 },
+  lumache:   { nome: 'Lumachicida granulare 1 kg', q: 9, um: 'pz', min: 4, prezzo: 9.80 },
+};
+
+const fatture = [
+  { id: 'f1', fornitore: 'Consorzio Sementi Padano', numero: '1452', data: '31/10/2026',
+    pronte: [ { art: 'pomodoro', q: 50 }, { art: 'lattuga', q: 40 }, { art: 'basilico', q: 30 } ],
+    attenzione: [ { id: 'r1', tipo: 'nuovo', nome: 'Semi zucchina Romanesca – bustina', q: 30, um: 'pz', costo: 1.15 } ],
+    escluse: [ { nome: 'Spese di trasporto', importo: 12.00 } ] },
+  { id: 'f2', fornitore: 'Fertilizzanti Rossi Spa', numero: 'A/388', data: '02/11/2026',
+    pronte: [ { art: 'terriccio', q: 20 }, { art: 'agrumi', q: 12 } ],
+    attenzione: [ { id: 'r2', tipo: 'confezione', art: 'npk', qFatt: 2, costo: 315.00 } ],
+    escluse: [] },
+  { id: 'f3', fornitore: 'Garden Tools Italia Srl', numero: '77', data: '03/11/2026', nuovoFornitore: true,
+    pronte: [],
+    attenzione: [
+      { id: 'r3', tipo: 'nuovo', nome: 'Forbici da potatura professionali', q: 6, um: 'pz', costo: 14.20 },
+      { id: 'r4', tipo: 'nuovo', nome: 'Guanti da giardino M', q: 20, um: 'paia', costo: 3.10, simile: 'guanti' } ],
+    escluse: [] },
+];
+const RICARICO = 0.6;
+
+let parte = [
+  { id: 'p1', titolo: 'Bolletta di Enel Energia', dett: 'Fattura n. 0042 del 28/10/2026 · 186,40 €',
+    motivo: 'Enel Energia non vende prodotti per il negozio, quindi le sue fatture non aggiungono merce.', azioni: ['ok', 'carica'] },
+  { id: 'p2', titolo: 'Reso a Fertilizzanti Rossi Spa', dett: 'Nota di credito n. 12 del 30/10/2026 · 63,00 €',
+    motivo: 'È un reso: 6 sacchi di terriccio sono tornati al fornitore, quindi non si aggiungono al magazzino.', azioni: ['reso', 'ok'] },
+  { id: 'p3', titolo: 'Fattura di Vivai Bianchi', dett: 'Fattura n. 310 del 29/10/2026 · 420,00 €',
+    motivo: 'È intestata a un\'altra partita IVA, non al tuo negozio. Non si può caricare: se è un errore, chiedi a Vivai Bianchi di correggerla.', azioni: ['ok'] },
+];
+
+const stato = { caricato: false, fornitori: {}, confezioni: {}, ultimoCarico: null };
+
+// ---------- Avviso con Annulla ----------
+let azioneAnnulla = null;
+function avviso(testo, annulla) {
+  $('#avviso-testo').textContent = testo;
+  azioneAnnulla = annulla || null;
+  $('#avviso-annulla').hidden = !annulla;
+  $('#avviso').hidden = false;
+}
+$('#avviso-chiudi').addEventListener('click', () => { $('#avviso').hidden = true; });
+$('#avviso-annulla').addEventListener('click', () => {
+  const f = azioneAnnulla; azioneAnnulla = null; $('#avviso').hidden = true; if (f) f();
+});
+
+// ---------- Cosa c'è da fare ----------
+function situazione(a) {
+  if (a.q < 0) return 'sistemare';
+  if (a.q <= a.min) return 'esaurimento';
+  return 'ok';
+}
+function disegnaHome() {
+  const inEsaurimento = Object.values(articoli).filter(a => situazione(a) === 'esaurimento').length;
+  const daSistemare = Object.values(articoli).filter(a => situazione(a) === 'sistemare').length;
+  const schede = [];
+  if (!stato.caricato) schede.push({ n: 3, t: 'fatture da controllare', d: 'Ci vogliono un paio di minuti.', link: '#controlla', btn: 'Controlla le fatture' });
+  if (parte.length) schede.push({ n: parte.length, t: parte.length === 1 ? 'fattura messa da parte' : 'fatture messe da parte', d: 'Bollette, resi e altro: guarda se va bene così.', link: '#parte', btn: 'Guarda' });
+  if (inEsaurimento) schede.push({ n: inEsaurimento, t: inEsaurimento === 1 ? 'prodotto sta finendo' : 'prodotti stanno finendo', d: 'Forse è il momento di riordinarli.', link: '#magazzino/esaurimento', btn: 'Vedi quali' });
+  if (daSistemare) schede.push({ n: daSistemare, t: daSistemare === 1 ? 'prodotto da sistemare' : 'prodotti da sistemare', d: 'Risultano venduti più pezzi di quelli caricati.', link: '#magazzino/sistemare', btn: 'Vedi quali' });
+  const el = $('#home-schede');
+  if (!schede.length) { el.innerHTML = '<div class="tutto-ok">✓ Tutto in ordine. Non c\'è niente da fare.</div>'; return; }
+  el.innerHTML = schede.map(s => `
+    <div class="scheda da-fare">
+      <p class="numero">${s.n}</p>
+      <h2 style="margin:0">${s.t}</h2>
+      <p class="sotto">${s.d}</p>
+      <a class="pulsante primario" href="${s.link}">${s.btn}<span class="sr"> – ${s.n} ${s.t}</span></a>
+    </div>`).join('') + (stato.caricato ? '<div class="scheda"><p class="numero">✓</p><h2 style="margin:0">Fatture controllate</h2><p class="sotto">Le fatture di oggi sono in magazzino.</p></div>' : '');
+}
+
+// ---------- Fatture da controllare ----------
+function prezzoSuggerito(costo) { return Math.round(costo * (1 + RICARICO) * 10) / 10; }
+
+function disegnaFatture() {
+  $('#controlla-vuoto').hidden = !stato.caricato;
+  $('#controlla-contenuto').hidden = stato.caricato;
+  if (stato.caricato) return;
+  $('#elenco-fatture').innerHTML = fatture.map(f => {
+    const qFornitore = f.nuovoFornitore ? `
+      <fieldset class="domanda" id="d-fornitore-${f.id}">
+        <legend>È la prima fattura di ${f.fornitore}. Vende prodotti che rivendi in negozio?</legend>
+        <p class="aiuto-campo" id="aiuto-forn-${f.id}">Lo chiediamo una volta sola: le prossime fatture di questo fornitore le gestiamo da soli.</p>
+        <p class="errore-campo" id="err-forn-${f.id}" hidden>Scegli Sì o No per continuare.</p>
+        <label class="scelta"><input type="radio" name="forn-${f.id}" value="si" aria-describedby="aiuto-forn-${f.id}"> Sì, vende merce per il negozio</label>
+        <label class="scelta"><input type="radio" name="forn-${f.id}" value="no" aria-describedby="aiuto-forn-${f.id}"> No (per esempio bollette, consulenze)</label>
+      </fieldset>` : '';
+    const righeAttenz = f.attenzione.map(r => r.tipo === 'nuovo' ? rigaNuovo(r) : rigaConfezione(r)).join('');
+    const pronte = f.pronte.length ? `
+      <details>
+        <summary>${f.pronte.length} prodotti pronti, nessun dubbio</summary>
+        <table><thead><tr><th scope="col">Prodotto</th><th scope="col" class="num">Da caricare</th></tr></thead>
+        <tbody>${f.pronte.map(p => `<tr><td>${articoli[p.art].nome}</td><td class="num">${num(p.q)} ${articoli[p.art].um}</td></tr>`).join('')}</tbody></table>
+      </details>` : '';
+    const escluse = f.escluse.length ? `
+      <details>
+        <summary>${f.escluse.length} riga non va in magazzino</summary>
+        <ul>${f.escluse.map(e => `<li>${e.nome} – ${euro(e.importo)}. Non è un prodotto, quindi resta fuori dal magazzino.</li>`).join('')}</ul>
+      </details>` : '';
+    return `
+      <article class="riquadro ${f.attenzione.length || f.nuovoFornitore ? 'attenzione' : ''}" aria-labelledby="tf-${f.id}" data-fattura="${f.id}">
+        <h2 id="tf-${f.id}">${f.fornitore}</h2>
+        <p class="sotto">Fattura n. ${f.numero} del ${f.data} · <a href="#aiuto" onclick="avviso('Nel programma vero qui si apre la fattura completa, come la vedi sul sito dell\\'Agenzia delle Entrate.');return false;">Vedi la fattura</a></p>
+        ${qFornitore}
+        <div class="righe-fornitore" data-righe="${f.id}">
+          ${righeAttenz}
+          ${pronte}
+          ${escluse}
+        </div>
+        <p class="sotto" data-scartata="${f.id}" hidden>Questa fattura verrà messa da parte e non aggiungerà merce.</p>
+      </article>`;
+  }).join('');
+  collegaEventiFatture();
+  aggiornaTotale();
+}
+
+function rigaNuovo(r) {
+  const simile = r.simile ? articoli[r.simile] : null;
+  return `
+    <div class="domanda" data-riga="${r.id}">
+      <p><span class="etichetta attenz">⚠ Prodotto nuovo</span> <strong>${r.nome}</strong> · ${num(r.q)} ${r.um} · costo ${euro(r.costo)} l'uno</p>
+      ${simile ? `<p class="aiuto-campo">Somiglia a un prodotto che hai già: <strong>${simile.nome}</strong>.</p>` : ''}
+      <fieldset>
+        <legend>Cos'è questo prodotto?</legend>
+        <label class="scelta"><input type="radio" name="tipo-${r.id}" value="nuovo" ${simile ? '' : 'checked'}> Un prodotto nuovo per il negozio</label>
+        <label class="scelta"><input type="radio" name="tipo-${r.id}" value="esistente" ${simile ? 'checked' : ''}> Lo vendo già${simile ? ': ' + simile.nome : ' (scelgo quale)'}</label>
+      </fieldset>
+      ${simile ? '' : `
+      <div class="campo" id="scegli-${r.id}" hidden>
+        <label for="quale-${r.id}">Quale prodotto è?</label>
+        <select id="quale-${r.id}">${Object.entries(articoli).filter(([, a]) => !a.nuovo).sort((x, y) => x[1].nome.localeCompare(y[1].nome, 'it')).map(([k, a]) => `<option value="${k}">${a.nome}</option>`).join('')}</select>
+      </div>`}
+      <div class="campo" id="campo-prezzo-${r.id}" ${simile ? 'hidden' : ''}>
+        <label for="prezzo-${r.id}">Prezzo di vendita (facoltativo)</label>
+        <input type="text" inputmode="decimal" id="prezzo-${r.id}" value="${prezzoSuggerito(r.costo).toLocaleString('it-IT', { minimumFractionDigits: 2 })}" aria-describedby="sugg-${r.id}">
+        <span class="aiuto-campo" id="sugg-${r.id}">Ti proponiamo ${euro(prezzoSuggerito(r.costo))}: il costo più il 60% di ricarico. Puoi cambiarlo.</span>
+      </div>
+    </div>`;
+}
+
+function rigaConfezione(r) {
+  const a = articoli[r.art];
+  return `
+    <div class="domanda" data-riga="${r.id}">
+      <p><span class="etichetta attenz">⚠ Serve una risposta</span> <strong>${a.nome}</strong></p>
+      <p>Il fornitore ha fatturato <strong>${r.qFatt} confezioni</strong>, ma tu lo vendi a <strong>${a.um}</strong>.</p>
+      <div class="campo" id="campo-conf-${r.id}">
+        <label for="conf-${r.id}">Quanti ${a.um} ci sono in una confezione?</label>
+        <span class="errore-campo" id="err-conf-${r.id}" hidden>Scrivi un numero, per esempio 10.</span>
+        <input type="number" min="1" step="1" id="conf-${r.id}" aria-describedby="aiuto-conf-${r.id}" style="max-width:8rem">
+        <span class="aiuto-campo" id="aiuto-conf-${r.id}">Lo ricordiamo noi per le prossime fatture.</span>
+        <span class="risultato" id="ris-conf-${r.id}" aria-live="polite"></span>
+      </div>
+    </div>`;
+}
+
+function collegaEventiFatture() {
+  fatture.forEach(f => {
+    if (f.nuovoFornitore) {
+      document.querySelectorAll(`input[name="forn-${f.id}"]`).forEach(i => i.addEventListener('change', () => {
+        stato.fornitori[f.id] = i.value;
+        $(`#err-forn-${f.id}`).hidden = true;
+        document.querySelector(`[data-righe="${f.id}"]`).hidden = i.value === 'no';
+        document.querySelector(`[data-scartata="${f.id}"]`).hidden = i.value !== 'no';
+        aggiornaTotale();
+      }));
+    }
+    f.attenzione.filter(r => r.tipo === 'nuovo').forEach(r => {
+      document.querySelectorAll(`input[name="tipo-${r.id}"]`).forEach(i => i.addEventListener('change', () => {
+        const esistente = i.value === 'esistente';
+        const scegli = $(`#scegli-${r.id}`);
+        if (scegli) scegli.hidden = !esistente;
+        $(`#campo-prezzo-${r.id}`).hidden = esistente;
+      }));
+    });
+    f.attenzione.filter(r => r.tipo === 'confezione').forEach(r => {
+      const inp = $(`#conf-${r.id}`);
+      inp.addEventListener('input', () => {
+        const v = parseInt(inp.value, 10);
+        stato.confezioni[r.id] = v > 0 ? v : null;
+        const a = articoli[r.art];
+        $(`#ris-conf-${r.id}`).textContent = v > 0 ? `Caricherai ${num(r.qFatt * v)} ${a.um}.` : '';
+        if (v > 0) { $(`#err-conf-${r.id}`).hidden = true; $(`#campo-conf-${r.id}`).classList.remove('con-errore'); inp.removeAttribute('aria-invalid'); }
+        aggiornaTotale();
+      });
+    });
+  });
+}
+
+function pezziDaCaricare() {
+  let tot = 0, nFatture = 0;
+  fatture.forEach(f => {
+    if (stato.fornitori[f.id] === 'no') return;
+    nFatture++;
+    f.pronte.forEach(p => tot += p.q);
+    f.attenzione.forEach(r => { tot += r.tipo === 'confezione' ? r.qFatt * (stato.confezioni[r.id] || 0) : r.q; });
+  });
+  return { tot, nFatture };
+}
+function aggiornaTotale() {
+  const { tot, nFatture } = pezziDaCaricare();
+  $('#totale-carico').textContent = `Verranno caricati ${num(tot)} pezzi da ${nFatture} ${nFatture === 1 ? 'fattura' : 'fatture'}.`;
+}
+
+$('#btn-carica').addEventListener('click', () => {
+  const errori = [];
+  fatture.forEach(f => {
+    if (f.nuovoFornitore && !stato.fornitori[f.id]) {
+      errori.push({ testo: `Dicci se ${f.fornitore} vende merce per il negozio`, ancora: `d-fornitore-${f.id}`, campo: document.querySelector(`input[name="forn-${f.id}"]`) });
+      $(`#err-forn-${f.id}`).hidden = false;
+    }
+    if (stato.fornitori[f.id] === 'no') return;
+    f.attenzione.filter(r => r.tipo === 'confezione' && !stato.confezioni[r.id]).forEach(r => {
+      errori.push({ testo: `Scrivi quanti ${articoli[r.art].um} ci sono in una confezione di ${articoli[r.art].nome}`, ancora: `conf-${r.id}`, campo: $(`#conf-${r.id}`) });
+      $(`#err-conf-${r.id}`).hidden = false;
+      $(`#campo-conf-${r.id}`).classList.add('con-errore');
+      $(`#conf-${r.id}`).setAttribute('aria-invalid', 'true');
+      $(`#conf-${r.id}`).setAttribute('aria-describedby', `err-conf-${r.id} aiuto-conf-${r.id}`);
+    });
+  });
+  const box = $('#riepilogo-errori');
+  if (errori.length) {
+    box.innerHTML = `<h2>${errori.length === 1 ? 'Manca una risposta' : 'Mancano ' + errori.length + ' risposte'}</h2>
+      <ul>${errori.map((e, i) => `<li><a href="#${e.ancora}" data-err="${i}">${e.testo}</a></li>`).join('')}</ul>`;
+    box.querySelectorAll('a').forEach(a => a.addEventListener('click', ev => { ev.preventDefault(); errori[a.dataset.err].campo.focus(); }));
+    box.hidden = false;
+    box.focus();
+    return;
+  }
+  box.hidden = true;
+  // Carico: aggiorna il magazzino e ricorda cosa annullare.
+  const movimenti = [];
+  fatture.forEach(f => {
+    if (stato.fornitori[f.id] === 'no') return;
+    f.pronte.forEach(p => movimenti.push([p.art, p.q]));
+    f.attenzione.filter(r => r.tipo === 'confezione').forEach(r => movimenti.push([r.art, r.qFatt * stato.confezioni[r.id]]));
+    f.attenzione.filter(r => r.tipo === 'nuovo').forEach(r => {
+      const scelta = document.querySelector(`input[name="tipo-${r.id}"]:checked`).value;
+      if (scelta === 'esistente') { movimenti.push([r.simile || $(`#quale-${r.id}`).value, r.q]); return; }
+      const chiave = 'nuovo-' + r.id;
+      const prezzo = parseFloat(($(`#prezzo-${r.id}`).value || '').replace(',', '.'));
+      articoli[chiave] = { nome: r.nome, q: 0, um: r.um, min: 0, prezzo: isNaN(prezzo) ? null : prezzo, nuovo: true };
+      movimenti.push([chiave, r.q]);
+    });
+  });
+  movimenti.forEach(([k, q]) => articoli[k].q += q);
+  // I fornitori indicati come "non di merce" finiscono tra le fatture messe da parte.
+  fatture.filter(f => stato.fornitori[f.id] === 'no').forEach(f => parte.push({
+    id: 'p-' + f.id, daCarico: true, titolo: 'Fattura di ' + f.fornitore, dett: `Fattura n. ${f.numero} del ${f.data}`,
+    motivo: `Hai detto che ${f.fornitore} non vende prodotti per il negozio. Le sue prossime fatture arriveranno direttamente qui.`, azioni: ['ok', 'carica'] }));
+  stato.caricato = true;
+  stato.ultimoCarico = movimenti;
+  const { tot, nFatture } = pezziDaCaricare();
+  location.hash = '#home';
+  avviso(`Fatto! Hai caricato ${num(tot)} pezzi da ${nFatture} fatture in magazzino.`, annullaCarico);
+});
+
+function annullaCarico() {
+  (stato.ultimoCarico || []).forEach(([k, q]) => {
+    articoli[k].q -= q;
+    if (articoli[k].nuovo) delete articoli[k];
+  });
+  parte = parte.filter(p => !p.daCarico);
+  stato.caricato = false; stato.ultimoCarico = null;
+  stato.fornitori = {}; stato.confezioni = {};
+  disegnaTutto();
+  avviso('Carico annullato: le fatture sono di nuovo da controllare.');
+}
+
+// ---------- Messe da parte ----------
+const etichetteAzioni = { ok: 'Va bene così', carica: 'Caricala comunque', reso: 'Togli dal magazzino la merce resa' };
+function disegnaParte() {
+  $('#parte-vuoto').hidden = parte.length > 0;
+  $('#lista-parte').innerHTML = parte.map(p => `
+    <li class="riquadro" aria-labelledby="tp-${p.id}">
+      <h2 id="tp-${p.id}" style="margin-top:0">${p.titolo}</h2>
+      <p class="sotto">${p.dett}</p>
+      <p><strong>Perché è qui:</strong> ${p.motivo}</p>
+      <div class="azioni">${p.azioni.map((a, i) => `<button class="${i === 0 ? 'primario' : ''}" data-parte="${p.id}" data-azione="${a}">${etichetteAzioni[a]}</button>`).join('')}</div>
+    </li>`).join('');
+  document.querySelectorAll('[data-parte]').forEach(b => b.addEventListener('click', () => azioneParte(b.dataset.parte, b.dataset.azione)));
+}
+function azioneParte(id, azione) {
+  const i = parte.findIndex(p => p.id === id);
+  const voce = parte[i];
+  parte.splice(i, 1);
+  let annulla = () => { parte.splice(i, 0, voce); disegnaTutto(); avviso('Fatto: la fattura è tornata tra quelle messe da parte.'); };
+  let testo = 'Fatto: non te la mostriamo più.';
+  if (azione === 'reso') {
+    articoli.terriccio.q -= 6;
+    testo = 'Fatto: 6 sacchi di terriccio tolti dal magazzino.';
+    const prima = annulla; annulla = () => { articoli.terriccio.q += 6; prima(); };
+  }
+  if (azione === 'carica') testo = 'Fatto: la trovi tra le fatture da controllare. (Nel prototipo non compare davvero.)';
+  disegnaTutto();
+  const prossimo = document.querySelector('#lista-parte button') || $('#t-parte');
+  prossimo.focus();
+  avviso(testo, annulla);
+}
+
+// ---------- Magazzino ----------
+const testiSituazione = {
+  ok: '<span class="etichetta ok">✓ Disponibile</span>',
+  esaurimento: '<span class="etichetta attenz">⚠ Sta finendo</span>',
+  sistemare: '<span class="etichetta err">✕ Da sistemare</span>',
+};
+function disegnaMagazzino() {
+  const testo = $('#cerca').value.trim().toLowerCase();
+  const filtro = document.querySelector('input[name="filtro"]:checked').value;
+  const righe = Object.values(articoli)
+    .filter(a => !testo || a.nome.toLowerCase().includes(testo))
+    .filter(a => filtro === 'tutti' || situazione(a) === filtro)
+    .sort((a, b) => a.nome.localeCompare(b.nome, 'it'));
+  $('#corpo-magazzino').innerHTML = righe.map(a => `
+    <tr><th scope="row" style="font-weight:600">${a.nome}${a.nuovo ? ' <span class="etichetta ok">Nuovo</span>' : ''}</th>
+    <td class="num">${num(a.q)} ${a.um}</td>
+    <td class="num">${a.prezzo == null ? '<span class="sotto">da impostare</span>' : euro(a.prezzo)}</td>
+    <td>${testiSituazione[situazione(a)]}${situazione(a) === 'sistemare' ? '<br><span class="aiuto-campo">Risultano venduti più pezzi di quelli caricati.</span>' : ''}</td></tr>`).join('');
+  $('#conteggio-magazzino').textContent = righe.length ? `${righe.length} ${righe.length === 1 ? 'prodotto' : 'prodotti'}` : 'Nessun prodotto trovato. Prova a cercare una parola diversa.';
+  $('#tel-esaurimento').innerHTML = Object.values(articoli).filter(a => situazione(a) !== 'ok')
+    .map(a => `<li><strong>${a.nome}</strong><br>${num(a.q)} ${a.um} · ${situazione(a) === 'sistemare' ? 'da sistemare' : 'sta finendo'}</li>`).join('');
+}
+$('#cerca').addEventListener('input', disegnaMagazzino);
+document.querySelectorAll('input[name="filtro"]').forEach(i => i.addEventListener('change', disegnaMagazzino));
+
+// ---------- Telefono ----------
+document.querySelectorAll('[data-tel-btn]').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('[data-tel-btn]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  document.querySelectorAll('[data-tel]').forEach(p => p.hidden = p.dataset.tel !== b.dataset.telBtn);
+}));
+
+// ---------- Preferenze ----------
+function preferenza(btn, classe) {
+  btn.addEventListener('click', () => {
+    const attivo = document.documentElement.classList.toggle(classe);
+    btn.setAttribute('aria-pressed', String(attivo));
+  });
+}
+preferenza($('#btn-grande'), 'grande');
+preferenza($('#btn-contrasto'), 'contrasto');
+$('#btn-assistenza').addEventListener('click', () => avviso('Nel programma vero qui parte l\'assistenza: una persona ti guida a voce, vedendo il tuo schermo solo se dai il permesso.'));
+
+// ---------- Navigazione ----------
+function disegnaTutto() { disegnaHome(); disegnaFatture(); disegnaParte(); disegnaMagazzino(); }
+let primaVolta = true;
+function vai() {
+  const [vista, filtro] = (location.hash.slice(1) || 'home').split('/');
+  const sezioni = document.querySelectorAll('[data-vista]');
+  const esiste = [...sezioni].some(s => s.dataset.vista === vista);
+  // Ancore interne (per esempio "Vai al contenuto") non cambiano schermata.
+  if (!esiste && !primaVolta) return;
+  primaVolta = false;
+  const nome = esiste ? vista : 'home';
+  sezioni.forEach(s => s.hidden = s.dataset.vista !== nome);
+  const voce = nome === 'parte' ? 'controlla' : nome;
+  document.querySelectorAll('[data-voce]').forEach(a => a.dataset.voce === voce ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  if (nome === 'magazzino' && filtro) {
+    const r = document.querySelector(`input[name="filtro"][value="${filtro}"]`);
+    if (r) { r.checked = true; }
+  }
+  disegnaTutto();
+  const titolo = document.querySelector(`[data-vista="${nome}"] h1`);
+  document.title = titolo.textContent + ' – LeanSolo (prototipo)';
+  titolo.focus();
+}
+window.addEventListener('hashchange', vai);
+vai();
+</script>
+<style>.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }</style>
+</body>
+</html>
