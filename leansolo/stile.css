@@ -1,0 +1,40 @@
+:root {
+  --bg: #f7f8f4; --sup: #ffffff; --testo: #1b1f1a; --tenue: #4a5248; --bordo: #c9cfc4;
+  --prim: #2f6b2a; --prim-testo: #ffffff; --focus: #1a4fd6;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121512; --sup: #1b201b; --testo: #e8ece6; --tenue: #b8c0b4; --bordo: #46503f;
+    --prim: #8fd18a; --prim-testo: #0d1a0c; --focus: #8ab4ff;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--testo); font: 18px/1.6 system-ui, "Segoe UI", Roboto, Arial, sans-serif; }
+a { color: var(--prim); }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.salta { position: absolute; left: -9999px; }
+.salta:focus { left: 1rem; top: 1rem; background: var(--sup); padding: .5rem 1rem; }
+header, footer { background: var(--sup); border-color: var(--bordo); }
+header { border-bottom: 1px solid var(--bordo); }
+footer { border-top: 1px solid var(--bordo); margin-top: 3rem; }
+.contenitore { max-width: 860px; margin: 0 auto; padding: 1rem; }
+.marchio { font-weight: 800; font-size: 1.3rem; color: var(--prim); text-decoration: none; }
+nav ul { list-style: none; padding: 0; margin: .4rem 0 0; display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; }
+nav a { display: inline-block; min-height: 44px; line-height: 44px; }
+h1 { font-size: 2rem; line-height: 1.2; margin: 1.5rem 0 .5rem; }
+h2 { font-size: 1.3rem; margin: 2rem 0 .5rem; }
+.sotto { color: var(--tenue); }
+.schede { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; padding: 0; list-style: none; }
+.schede li { background: var(--sup); border: 1px solid var(--bordo); border-radius: 10px; padding: 1rem; }
+.schede strong { display: block; margin-bottom: .3rem; }
+table { border-collapse: collapse; width: 100%; background: var(--sup); }
+th, td { text-align: left; vertical-align: top; padding: .5rem; border-bottom: 1px solid var(--bordo); }
+.riquadro { background: var(--sup); border: 1px solid var(--bordo); border-left: 6px solid var(--prim); border-radius: 10px; padding: .8rem 1rem; }
+.pulsante { display: inline-flex; align-items: center; min-height: 48px; margin: .5rem 0 .3rem; padding: .5rem 1.2rem; border-radius: 10px; background: var(--prim); color: var(--prim-testo); font-weight: 700; text-decoration: none; }
+.pulsante:hover { filter: brightness(1.08); }
+.schede li .sotto { display: block; font-size: .9rem; }
+details { margin: .6rem 0; }
+summary { cursor: pointer; font-weight: 600; min-height: 44px; display: flex; align-items: center; }
+.impronta { word-break: break-all; font-size: .85rem; }

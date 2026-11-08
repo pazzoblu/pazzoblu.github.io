@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeanSolo – fatture e magazzino per il tuo negozio</title>
+<meta name="description" content="LeanSolo legge le fatture elettroniche dei fornitori e aggiorna il magazzino del negozio. I dati restano sul computer del negozio.">
+<link rel="stylesheet" href="stile.css">
+</head>
+<body>
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+<header>
+  <div class="contenitore">
+    <a class="marchio" href="./">LeanSolo</a>
+    <nav aria-label="Menu"><ul>
+      <li><a href="./" aria-current="page">Home</a></li>
+      <li><a href="#scarica">Scarica</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="termini.html">Termini di servizio</a></li>
+    </ul></nav>
+  </div>
+</header>
+<main id="contenuto" class="contenitore">
+  <h1>Le fatture dei fornitori, in magazzino da sole</h1>
+  <p class="sotto">LeanSolo è un programma per negozi: legge le fatture elettroniche d'acquisto, ti chiede conferma e aggiorna il magazzino. Pensato per chi non ha tempo da perdere con i gestionali.</p>
+
+  <h2>Cosa fa</h2>
+  <ul class="schede">
+    <li><strong>Legge le fatture</strong>File XML, firmati (.p7m) o in archivi .zip, così come li ricevi dal Sistema di Interscambio.</li>
+    <li><strong>Ti chiede solo il necessario</strong>Riconosce fornitori e prodotti già visti; per quelli nuovi ti fa una domanda semplice.</li>
+    <li><strong>Aggiorna il magazzino</strong>Quantità, prezzi d'acquisto (con gli sconti ripartiti) e prezzi di vendita suggeriti. Ogni carico si può annullare.</li>
+    <li><strong>Mette da parte il resto</strong>Bollette, resi e documenti di altri non toccano il magazzino, e ti spiega perché.</li>
+    <li><strong>Per tutto il negozio</strong>Ogni persona entra con il proprio account e vede solo le parti che le servono.</li>
+    <li><strong>Accessibile</strong>Si usa anche solo con la tastiera, con i lettori di schermo, con testo grande o ad alto contrasto.</li>
+  </ul>
+
+  <h2>I tuoi dati restano nel negozio</h2>
+  <div class="riquadro">
+    <p>Fatture, fornitori, prodotti e magazzino sono salvati <strong>solo sul computer del negozio</strong>. Il nostro server conosce soltanto chi può entrare: nome e partita IVA del negozio, email e compiti delle persone abilitate.</p>
+    <p>L'accesso con Google o Microsoft serve <strong>solo a riconoscerti</strong>: LeanSolo riceve il tuo nome e il tuo indirizzo email, e nient'altro del tuo account. Dettagli nelle <a href="privacy.html">informazioni sulla privacy</a>.</p>
+  </div>
+
+  <h2 id="scarica">Scarica LeanSolo</h2>
+  <p>Versione di prova <strong>0.2.2-demo</strong> (8 novembre 2026). Puoi provarla subito con un negozio di esempio, senza account; per usare il tuo negozio serve essere abilitati da chi ti ha fornito LeanSolo.</p>
+  <ul class="schede">
+    <li>
+      <strong>Windows 10 e 11</strong>
+      <a class="pulsante" href="https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.2.2-demo/LeanSolo-Setup-0.2.2-demo.exe">Scarica per Windows</a>
+      <span class="sotto">Programma di installazione, 6,5 MB</span>
+      <details><summary>Come si installa</summary>
+        <p>Apri il file scaricato. Se compare "Windows ha protetto il PC", premi <em>Ulteriori informazioni</em> e poi <em>Esegui comunque</em>: succede perché la versione di prova non è ancora firmata digitalmente. Poi Avanti, Avanti, Fine.</p>
+      </details>
+    </li>
+    <li>
+      <strong>Mac (macOS 12 o successivo)</strong>
+      <a class="pulsante" href="https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.2.2-demo/LeanSolo-0.2.2-demo-mac.zip">Scarica per Mac</a>
+      <span class="sotto">Per processori Apple e Intel, 12,4 MB</span>
+      <details><summary>Come si installa</summary>
+        <p>Apri lo zip e trascina LeanSolo in Applicazioni. La prima volta il Mac lo blocca perché non è ancora certificato da Apple: apri <em>Impostazioni di Sistema → Privacy e sicurezza</em> e premi <em>Apri comunque</em>. Le istruzioni complete sono nel file LEGGIMI dentro lo zip.</p>
+      </details>
+    </li>
+  </ul>
+  <details>
+    <summary>Controllo dei file (SHA-256)</summary>
+    <p>Per verificare che il file scaricato sia integro, confronta la sua impronta con queste:</p>
+    <ul>
+      <li><code>LeanSolo-Setup-0.2.2-demo.exe</code>: <code class="impronta">036fa23e1617cab5b03b0fdaab79d5ce276acee6621cedf102f4c35266721ce9</code></li>
+      <li><code>LeanSolo-0.2.2-demo-mac.zip</code>: <code class="impronta">a35d2cb6bf317ea59cb6fe8a77436b5289477917844307637790c4aa7c567d34</code></li>
+    </ul>
+  </details>
+  <p class="sotto">Scaricando accetti i <a href="termini.html">termini di servizio</a>. Questa è una versione di prova: disinstallandola si cancellano anche i dati salvati sul computer.</p>
+
+  <h2>Contatti</h2>
+  <p>LeanSolo è in sperimentazione con i primi negozi. Per informazioni o per abilitare il tuo negozio: <a href="mailto:gltucceri@gmail.com">gltucceri@gmail.com</a>.</p>
+</main>
+<footer>
+  <div class="contenitore">
+    <p class="sotto">LeanSolo · <a href="privacy.html">Privacy</a> · <a href="termini.html">Termini di servizio</a> · <a href="mailto:gltucceri@gmail.com">gltucceri@gmail.com</a></p>
+  </div>
+</footer>
+</body>
+</html>
