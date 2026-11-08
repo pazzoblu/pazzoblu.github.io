@@ -1,17 +1,17 @@
 {
-  "versione": "0.3.1-demo",
+  "versione": "0.3.2-demo",
   "data": "2026-11-08",
-  "note": "Stampe ed estrazioni con la prima nota di cassa, banca e magazzino; statistiche con l'inventario del magazzino.",
+  "note": "Nelle stampe la spunta \"Dall'ultima stampa in poi\".",
   "file": {
     "darwin": {
-      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.3.1-demo/LeanSolo-0.3.1-demo-mac.zip",
-      "sha256": "0cdba72c737362868217b4f975394a45521b2c5d8bf76af3d5d510b7b2d65d35",
-      "dimensione": 14509806
+      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.3.2-demo/LeanSolo-0.3.2-demo-mac.zip",
+      "sha256": "2c0e7ceac5fd7953f6a91aa0c85ae267760716a9dd9016fa2a82f2c64c3ba921",
+      "dimensione": 14531103
     },
     "windows-amd64": {
-      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.3.1-demo/LeanSolo-Setup-0.3.1-demo.exe",
-      "sha256": "98e7daa403673005426d7ad047a9fe1c01abd72ced578efffcf6ef6108f8df7c",
-      "dimensione": 7331342
+      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.3.2-demo/LeanSolo-Setup-0.3.2-demo.exe",
+      "sha256": "369da1137e1b985aa028c9aa66cdd6e3ec34a3e84e10880563706cc745b7eb50",
+      "dimensione": 7334590
     }
   }
 }
