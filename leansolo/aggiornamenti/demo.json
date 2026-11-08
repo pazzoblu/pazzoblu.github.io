@@ -1,0 +1,17 @@
+{
+  "versione": "0.3.0-demo",
+  "data": "2026-11-08",
+  "note": "Fatture dalla PEC e dagli intermediari, inventario e rettifiche di magazzino, collegamento con le casse, nuova icona.",
+  "file": {
+    "darwin": {
+      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.3.0-demo/LeanSolo-0.3.0-demo-mac.zip",
+      "sha256": "541c0de602a43b5ead89734e7131e962d78406f7cc777ec6e23010d023760547",
+      "dimensione": 14456926
+    },
+    "windows-amd64": {
+      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.3.0-demo/LeanSolo-Setup-0.3.0-demo.exe",
+      "sha256": "393e7ee7c8ce043685739b26e75d863cb259357f1b7494211aaa7e2aba09c011",
+      "dimensione": 7309076
+    }
+  }
+}
