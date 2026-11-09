@@ -1,17 +1,17 @@
 {
-  "versione": "0.3.2-demo",
-  "data": "2026-11-08",
-  "note": "Nelle stampe la spunta \"Dall'ultima stampa in poi\".",
+  "versione": "0.4.0-demo",
+  "data": "2026-11-09",
+  "note": "Prova gratuita di 30 giorni su un computer, con registrazione dal sito.",
   "file": {
     "darwin": {
-      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.3.2-demo/LeanSolo-0.3.2-demo-mac.zip",
-      "sha256": "2c0e7ceac5fd7953f6a91aa0c85ae267760716a9dd9016fa2a82f2c64c3ba921",
-      "dimensione": 14531103
+      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.4.0-demo/LeanSolo-0.4.0-demo-mac.zip",
+      "sha256": "17590e736d5703f8e3f6a729558ac9282f042d5d80d0e9dbb0452c9c31c7c19d",
+      "dimensione": 14526680
     },
     "windows-amd64": {
-      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.3.2-demo/LeanSolo-Setup-0.3.2-demo.exe",
-      "sha256": "369da1137e1b985aa028c9aa66cdd6e3ec34a3e84e10880563706cc745b7eb50",
-      "dimensione": 7334590
+      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.4.0-demo/LeanSolo-Setup-0.4.0-demo.exe",
+      "sha256": "f719905434d85b2a40a89b915558e9d756ca91c64f6dd42a048dd7ac493e5a9f",
+      "dimensione": 7349455
     }
   }
 }
