@@ -1,17 +1,17 @@
 {
-  "versione": "0.4.1-demo",
+  "versione": "0.5.0-demo",
   "data": "2026-11-09",
-  "note": "Configurazione guidata al primo avvio; collegamenti inclusi per casse via CSV, Aruba e Fatture in Cloud.",
+  "note": "Invio automatico della prima nota alla contabilità e riepilogo della licenza.",
   "file": {
     "darwin": {
-      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.4.1-demo/LeanSolo-0.4.1-demo-mac.zip",
-      "sha256": "bea584f7f0f4148291bada91927a95d13d8d5a3cc15504d227b6eb47cc874e3a",
-      "dimensione": 29370557
+      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.5.0-demo/LeanSolo-0.5.0-demo-mac.zip",
+      "sha256": "6dd43c67336e11f98bdfc7c31f9be77258f79c2fe33f153b6ea50e457ec27fd7",
+      "dimensione": 29406694
     },
     "windows-amd64": {
-      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.4.1-demo/LeanSolo-Setup-0.4.1-demo.exe",
-      "sha256": "d28efc04a233b19a6f752e5590b6ba543a18857ee1dc444853830f9f1aed05da",
-      "dimensione": 10269918
+      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.5.0-demo/LeanSolo-Setup-0.5.0-demo.exe",
+      "sha256": "7ae9a3dfa9915a377c9db6d7fdf1e92adfaf202b94424b2ce0b17efeb532020d",
+      "dimensione": 10283406
     }
   }
 }
