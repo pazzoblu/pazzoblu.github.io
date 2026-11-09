@@ -8,6 +8,15 @@
 <link rel="canonical" href="https://pazzoblu.github.io/leansolo/registrati.html">
 <link rel="icon" href="piuma.svg" type="image/svg+xml">
 <link rel="stylesheet" href="stile.css">
+<!-- lingue -->
+<link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/registrati.html">
+<link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/registrati.html">
+<link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/registrati.html">
+<link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/registrati.html">
+<link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/registrati.html">
+<link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/registrati.html">
+<link rel="alternate" hreflang="x-default" href="https://pazzoblu.github.io/leansolo/registrati.html">
+<!-- /lingue -->
 </head>
 <body>
 <a class="salta" href="#contenuto">Vai al contenuto</a>
@@ -23,6 +32,9 @@
       <li><a href="privacy.html">Privacy</a></li>
       <li><a href="termini.html">Termini</a></li>
     </ul></nav>
+    <!-- selettore -->
+    <nav class="lingue" aria-label="Lingua · Language"><ul><li><a href="registrati.html" lang="it" hreflang="it" aria-current="true" title="Italiano">IT</a></li><li><a href="en/registrati.html" lang="en" hreflang="en" title="English">EN</a></li><li><a href="fr/registrati.html" lang="fr" hreflang="fr" title="Français">FR</a></li><li><a href="de/registrati.html" lang="de" hreflang="de" title="Deutsch">DE</a></li><li><a href="pt/registrati.html" lang="pt" hreflang="pt" title="Português">PT</a></li><li><a href="es/registrati.html" lang="es" hreflang="es" title="Español">ES</a></li></ul></nav>
+    <!-- /selettore -->
   </div>
 </header>
 <main id="contenuto" class="contenitore documento">
@@ -77,6 +89,36 @@
 <script>
 (function () {
   var URL_REGISTRAZIONE = 'https://hgjkoupuoymmfllaqheb.supabase.co/functions/v1/leansolo-registrazione';
+  // Testi del modulo (tradotti da traduci.py). In italiano si usano i messaggi
+  // del server; nelle altre lingue quelli qui sotto, scelti da stato e campo.
+  var T = {
+    italiano: true,
+    negozio: 'Scrivi il nome del negozio.',
+    partita_iva: 'Scrivi la partita IVA.',
+    nome: 'Scrivi il tuo nome e cognome.',
+    email: 'Scrivi la tua email.',
+    privacy: 'Per registrarti devi accettare termini di servizio e informativa privacy.',
+    piva_non_valida: 'La partita IVA non è valida: controlla le 11 cifre.',
+    email_non_valida: "Scrivi un'email valida, per esempio nome@gmail.com.",
+    piva_registrata: "Questa partita IVA è già registrata. Scarica LeanSolo ed entra con l'email usata per la registrazione; se non la ricordi, scrivici.",
+    email_registrata: 'Questa email usa già LeanSolo. Scarica il programma ed entra con questo indirizzo.',
+    troppe: "Troppe registrazioni in questo momento: riprova tra un'ora.",
+    non_risponde: 'Il servizio non risponde: riprova tra qualche minuto.',
+    non_raggiungibile: 'Non riesco a raggiungere il servizio: controlla la connessione e riprova.',
+    attendi: 'Un momento…',
+    invia: 'Registrati'
+  };
+  function testoServer(stato, r) {
+    if (T.italiano && r.messaggio) return r.messaggio;
+    if (stato === 409) return r.campo === 'email' ? T.email_registrata : T.piva_registrata;
+    if (stato === 429) return T.troppe;
+    if (stato === 400) {
+      if (r.campo === 'partita_iva') return T.piva_non_valida;
+      if (r.campo === 'email') return T.email_non_valida;
+      if (T[r.campo]) return T[r.campo];
+    }
+    return T.non_risponde;
+  }
   var f = document.getElementById('registrazione');
   var errori = document.getElementById('errori');
   function mostraErrore(campo, testo) {
@@ -92,25 +134,26 @@
       negozio: f.negozio.value, partita_iva: f.partita_iva.value, nome: f.nome.value,
       email: f.email.value, sito_web: f.sito_web.value, privacy: f.privacy.checked
     };
-    var obbligatori = [['negozio', 'Scrivi il nome del negozio.'], ['partita_iva', 'Scrivi la partita IVA.'],
-      ['nome', 'Scrivi il tuo nome e cognome.'], ['email', 'Scrivi la tua email.']];
+    var obbligatori = ['negozio', 'partita_iva', 'nome', 'email'];
     for (var i = 0; i < obbligatori.length; i++) {
-      if (!dati[obbligatori[i][0]].trim()) { mostraErrore(obbligatori[i][0], obbligatori[i][1]); return; }
+      if (!dati[obbligatori[i]].trim()) { mostraErrore(obbligatori[i], T[obbligatori[i]]); return; }
     }
-    if (!dati.privacy) { mostraErrore('privacy', 'Per registrarti devi accettare termini di servizio e informativa privacy.'); return; }
+    if (!dati.privacy) { mostraErrore('privacy', T.privacy); return; }
     var b = f.querySelector('button[type=submit]');
-    b.disabled = true; b.textContent = 'Un momento…';
+    b.disabled = true; b.textContent = T.attendi;
     fetch(URL_REGISTRAZIONE, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(dati) })
-      .then(function (r) { return r.json().catch(function () { return { ok: false, messaggio: 'Il servizio non risponde: riprova tra qualche minuto.' }; }); })
+      .then(function (risposta) {
+        return risposta.json().catch(function () { return {}; }).then(function (r) { r.stato = risposta.status; return r; });
+      })
       .then(function (r) {
-        if (!r.ok) { mostraErrore(r.campo, r.messaggio || 'Qualcosa non ha funzionato: riprova.'); return; }
+        if (!r.ok) { mostraErrore(r.campo, testoServer(r.stato, r)); return; }
         f.hidden = true;
         document.getElementById('esito-email').textContent = dati.email.trim().toLowerCase();
         var ok = document.getElementById('esito-ok');
         ok.hidden = false; ok.focus();
       })
-      .catch(function () { mostraErrore('', 'Non riesco a raggiungere il servizio: controlla la connessione e riprova.'); })
-      .finally(function () { b.disabled = false; b.textContent = 'Registrati'; });
+      .catch(function () { mostraErrore('', T.non_raggiungibile); })
+      .finally(function () { b.disabled = false; b.textContent = T.invia; });
   });
 })();
 </script>

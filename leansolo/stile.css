@@ -189,3 +189,10 @@ footer a { color: var(--tenue); }
 .riquadro-errore { border: 3px solid #b3261e; border-radius: 12px; padding: .8rem 1rem; font-weight: 600; }
 .riquadro-ok { border: 3px solid var(--prim); border-radius: 12px; padding: 1rem 1.2rem; margin: 1.5rem 0 3rem; }
 .riquadro-ok h2 { margin-top: 0; }
+
+/* Selettore di lingua */
+.lingue ul { display: flex; flex-wrap: wrap; gap: .1rem; list-style: none; margin: 0; padding: 0; }
+.lingue a { display: inline-block; min-width: 2.4rem; min-height: 2.4rem; line-height: 2.4rem; text-align: center; font-size: .85rem; font-weight: 700; border-radius: 8px; text-decoration: none; color: inherit; opacity: .75; }
+.lingue a:hover, .lingue a:focus-visible { opacity: 1; text-decoration: underline; }
+.lingue a[aria-current] { opacity: 1; background: var(--prim-chiaro); color: var(--prim-scuro); }
+.nota-legale { font-size: .92rem; border-left: 4px solid var(--prim); padding-left: .8rem; }

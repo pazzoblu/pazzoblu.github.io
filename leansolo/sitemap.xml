@@ -1,7 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://pazzoblu.github.io/leansolo/</loc></url>
-  <url><loc>https://pazzoblu.github.io/leansolo/registrati.html</loc></url>
-  <url><loc>https://pazzoblu.github.io/leansolo/privacy.html</loc></url>
-  <url><loc>https://pazzoblu.github.io/leansolo/termini.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://pazzoblu.github.io/leansolo/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/registrati.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/registrati.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/privacy.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/termini.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/termini.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/en/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/en/registrati.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/registrati.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/en/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/privacy.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/en/termini.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/termini.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/fr/registrati.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/registrati.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/fr/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/privacy.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/fr/termini.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/termini.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/de/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/de/registrati.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/registrati.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/de/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/privacy.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/de/termini.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/termini.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/pt/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/pt/registrati.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/registrati.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/pt/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/privacy.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/pt/termini.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/termini.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/es/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/es/registrati.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/registrati.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/registrati.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/es/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/privacy.html"/>
+  </url>
+  <url><loc>https://pazzoblu.github.io/leansolo/es/termini.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://pazzoblu.github.io/leansolo/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pazzoblu.github.io/leansolo/en/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pazzoblu.github.io/leansolo/fr/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pazzoblu.github.io/leansolo/de/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pazzoblu.github.io/leansolo/pt/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pazzoblu.github.io/leansolo/es/termini.html"/>
+  </url>
 </urlset>
