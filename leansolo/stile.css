@@ -196,3 +196,13 @@ footer a { color: var(--tenue); }
 .lingue a:hover, .lingue a:focus-visible { opacity: 1; text-decoration: underline; }
 .lingue a[aria-current] { opacity: 1; background: var(--prim-chiaro); color: var(--prim-scuro); }
 .nota-legale { font-size: .92rem; border-left: 4px solid var(--prim); padding-left: .8rem; }
+
+/* Prezzi */
+.listino { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); max-width: 46rem; margin: 0 auto; }
+.listino li { display: flex; flex-direction: column; gap: .3rem; }
+.listino .prezzo { font-size: 2.2rem; font-weight: 800; color: var(--prim); line-height: 1.1; }
+.listino .prezzo small { font-size: 1rem; font-weight: 600; color: var(--tenue); }
+.listino .descrizione { margin-top: .4rem; }
+.listino .evidenza { border: 2px solid var(--prim); }
+.titolo-moduli { text-align: center; font-size: 1.15rem; margin: 2.2rem 0 1rem; }
+.prezzi .nota { text-align: center; max-width: 44rem; margin: 1.4rem auto 0; }
