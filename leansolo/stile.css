@@ -143,6 +143,7 @@ section { padding: 4rem 0 0; }
 .download .schede li { display: flex; flex-direction: column; align-items: flex-start; }
 .download .pulsante { margin: .8rem 0 .4rem; }
 .download .sotto { font-size: .9rem; }
+.download .alternativa { font-size: .9rem; margin: 0 0 .4rem; }
 .versione { display: inline-block; padding: .2rem .7rem; border-radius: 999px; background: var(--prim-chiaro); color: var(--prim); font-weight: 700; font-size: .9rem; }
 details { margin: .7rem 0 0; width: 100%; }
 summary { cursor: pointer; font-weight: 600; min-height: 44px; display: flex; align-items: center; }
