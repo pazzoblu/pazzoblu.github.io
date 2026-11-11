@@ -218,3 +218,33 @@ footer a { color: var(--tenue); }
 .lingue ul a[aria-current] { background: var(--prim-chiaro); color: var(--prim); }
 .bandiera { width: 1.35rem; height: .9rem; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0, 0, 0, .15); flex: none; }
 .lingue ul.a-destra { left: auto; right: 0; }
+
+/* Guida all'uso (guida.html) */
+.guida h2 { margin-top: 2.4rem; }
+.guida .indice-guida { background: var(--sup); border: 1px solid var(--bordo); border-radius: var(--raggio); padding: .4rem 1.4rem 1rem; }
+.guida .indice-guida h2 { margin-top: .8rem; font-size: 1.15rem; }
+.guida .passi-guida li, .guida ul li { margin-bottom: .45rem; }
+.guida .passi-guida li::marker { color: var(--prim); font-weight: 700; }
+.guida figure { margin: 1.4rem 0; }
+.guida figure img { width: 100%; height: auto; border: 1px solid var(--bordo); border-radius: 10px; }
+.guida figcaption { font-size: .9rem; color: var(--tenue); text-align: center; margin-top: .4rem; }
+.riquadro-guida { margin: 1.2rem 0; padding: .9rem 1.2rem; border-radius: 10px; border-left: 6px solid var(--prim); background: var(--prim-chiaro); }
+.riquadro-guida p { margin: .2rem 0; }
+.riquadro-guida .etichetta { font-weight: 700; color: var(--prim); }
+.riquadro-guida.attenzione { border-left-color: #b7791f; background: #fff4d6; color: #3a2a06; }
+.riquadro-guida.attenzione .etichetta { color: #8a5a12; }
+.tabella-guida { overflow-x: auto; margin: 1rem 0; }
+.tabella-guida table { border-collapse: collapse; width: 100%; }
+.tabella-guida th, .tabella-guida td { border: 1px solid var(--bordo); padding: .55rem .75rem; text-align: left; vertical-align: top; }
+.tabella-guida thead th { background: var(--prim); color: var(--prim-testo); }
+.tabella-guida tbody th { background: var(--prim-chiaro); font-weight: 600; width: 36%; }
+@media print {
+  :root:root:root { --bg: #fff; --sup: #fff; --testo: #18201a; --tenue: #4c5649; --bordo: #dde3d7; --prim: #2f6b2a; --prim-chiaro: #e7f2e3; --prim-testo: #fff; }
+  body { background: #fff; color: #18201a; font-size: 11.5pt; }
+  .guida ~ footer, header, .salta, .guida .indice-guida, .guida a.pulsante { display: none !important; }
+  .guida { max-width: none; }
+  .guida h2 { break-after: avoid; }
+  .guida figure, .riquadro-guida, .tabella-guida tr { break-inside: avoid; }
+}
+.guida .indice-guida ul { list-style: none; padding: 0; margin: 0; columns: 2 16rem; }
+.guida .indice-guida li { margin: 0 0 .35rem; }
