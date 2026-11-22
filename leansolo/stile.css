@@ -248,3 +248,13 @@ footer a { color: var(--tenue); }
 }
 .guida .indice-guida ul { list-style: none; padding: 0; margin: 0; columns: 2 16rem; }
 .guida .indice-guida li { margin: 0 0 .35rem; }
+
+/* Banner cookie (consenso.js) */
+.cookie { position: fixed; left: 1rem; right: 1rem; bottom: 1rem; max-width: 40rem; margin: 0 auto; z-index: 50;
+  background: var(--sup); color: var(--testo); border: 2px solid var(--prim); border-radius: var(--raggio);
+  box-shadow: var(--ombra); padding: 1rem 1.2rem; }
+.cookie[hidden] { display: none; }
+.cookie p { margin: 0 0 .8rem; }
+.cookie-pulsanti { display: flex; gap: .6rem; justify-content: flex-end; flex-wrap: wrap; }
+.cookie-pulsanti button { font: inherit; font-weight: 600; cursor: pointer; border-radius: 12px; padding: .55rem 1.1rem;
+  border: 2px solid var(--bordo); background: transparent; color: var(--testo); }

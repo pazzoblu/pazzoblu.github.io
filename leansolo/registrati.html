@@ -152,11 +152,13 @@
         document.getElementById('esito-email').textContent = dati.email.trim().toLowerCase();
         var ok = document.getElementById('esito-ok');
         ok.hidden = false; ok.focus();
+        if (window.lsConversione) window.lsConversione();   // conversione Google Ads (solo con consenso)
       })
       .catch(function () { mostraErrore('', T.non_raggiungibile); })
       .finally(function () { b.disabled = false; b.textContent = T.invia; });
   });
 })();
 </script>
+<script src="consenso.js" defer></script>
 </body>
 </html>
