@@ -1,17 +1,17 @@
 {
-  "versione": "0.7.0-demo",
-  "data": "2026-11-11",
-  "note": "Esporta e importa le anagrafiche, copie di sicurezza su OneDrive, guida all'uso.",
+  "versione": "1.0.0",
+  "data": "2026-11-27",
+  "note": "LeanSolo 1.0.0: prima versione definitiva. I dati restano anche se disinstalli.",
   "file": {
     "darwin": {
-      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.7.0-demo/LeanSolo-0.7.0-demo-mac.zip",
-      "sha256": "ec7e5c937e9e5e3082ca4e3ba9a2edb496956e2f425dab264a20b6685f484fe3",
-      "dimensione": 29788295
+      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-1.0.0/LeanSolo-1.0.0-mac.zip",
+      "sha256": "1141f4b9fc3ceea31c49ab5de79d2300a221b63defca385b9e8ab3422d543979",
+      "dimensione": 29853334
     },
     "windows-amd64": {
-      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-0.7.0-demo/LeanSolo-Setup-0.7.0-demo.exe",
-      "sha256": "bb4056271cfadc75eace05339102fa95731706980dfbeea148b6e3adce84fba6",
-      "dimensione": 10400761
+      "url": "https://github.com/pazzoblu/pazzoblu.github.io/releases/download/leansolo-1.0.0/LeanSolo-Setup-1.0.0.exe",
+      "sha256": "cf5696124c2b7a5d9958f21387cd250c0594954b23c6dd2b5ccfb28770ccddf0",
+      "dimensione": 10409512
     }
   }
 }
